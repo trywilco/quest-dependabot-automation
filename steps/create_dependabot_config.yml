@@ -12,6 +12,8 @@ startFlow:
         messages:
           - text: Alright, treasure hunter, now we'll set up a Dependabot configuration file
               to automate updates.
+          - text: This file tells Dependabot when and where to look for updates, like
+              setting a weekly shopping list but for dependencies.
           - text: >
               In the .github folder of your repository, create a new file named
               `dependabot.yml`. Use the following configuration as a
@@ -27,8 +29,7 @@ startFlow:
                   schedule:
                     interval: 'daily'
               ```
-          - text: This file tells Dependabot when and where to look for updates, like
-              setting a weekly shopping list but for dependencies.
+          - text: ":instruction[**Open a PR with those changes**] and I will check it right away."
 
 trigger:
   type: github_pr_lifecycle_status
@@ -38,4 +39,3 @@ trigger:
         params:
           messages:
             person: lucca
-            approved: "You did it! Now you can merge it."

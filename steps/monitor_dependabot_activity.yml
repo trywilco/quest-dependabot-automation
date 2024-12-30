@@ -14,9 +14,9 @@ startFlow:
         messages:
           - text: Alright, the setup is done, but the journey doesn't end here.
           - text: Now, it's time to watch for Dependabot-generated pull requests. Keep an
-              eye on the pull requests tab.
-          - text: Choose one of the Dependabot pull requests from the list and review
-              the changes, it can take a couple of minutes. Once you're done, give me the PR **branch name** and i'll merge it.
+              eye on the [Actions Tab](${user.repository}/actions/workflows/dependabot/dependabot-updates) and wait for the job to finish.
+          - text: Once the actions is done, choose one of the Dependabot pull requests from the list
+          - text: Give me the PR **branch name** and i'll merge it.
 
 trigger:
   type: user_message
