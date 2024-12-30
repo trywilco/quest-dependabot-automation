@@ -39,3 +39,4 @@ trigger:
         params:
           messages:
             person: lucca
+            approved: "You did it! Now you can merge it."
