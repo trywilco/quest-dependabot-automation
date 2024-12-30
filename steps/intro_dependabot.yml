@@ -1,0 +1,26 @@
+id: intro_dependabot
+learningObjectives:
+  - Intro to Dependabot
+hints:
+startFlow:
+  do:
+    - actionId: github_repo_api
+      params:
+        method: put
+        path: /vulnerability-alerts
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: Hey, Lucca here. Ready to boost our repo's security?
+          - text: Dependabot is our hero today.
+          - text: Dependabot keeps an eye on our dependencies, scans for vulnerabilities, and alerts us when it’s time to take action.
+          - text: Ready to see how many critical alerts Dependabot has found in our repo?
+    - actionId: ready_message
+      params:
+        person: lucca
+trigger:
+  type: user_ready_response
+  flowNode:
+    do:
+     - actionId: finish_step

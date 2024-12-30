@@ -1,0 +1,49 @@
+id: review_dependabot_alerts
+learningObjectives:
+  - Review Dependabot alerts for vulnerabilities.
+hints:
+  - Navigate to the Security tab in your GitHub repository.
+  - Look for any alerts marked by Dependabot under 'Security alerts'.
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: First, let's check the 'Security alerts' tab
+              in your repo to see if Dependabot has sniffed out any
+              vulnerabilities. It's like finding hidden treasures, only these
+              treasures want to sink your project.
+          - text: "Open your [Dependabot vulnerability report](${user.repository}/security/dependabot)."
+          - text: "Let me know how many **Critical** Dependabot vulnerability alerts you see?"
+trigger:
+  type: user_message
+  flowNode:
+    do:
+      - actionId: github_repo_api
+        name: get_dependabot_alerts
+        params:
+          method: get
+          path: /dependabot/alerts?severity=critical&state=open
+    if:
+      conditions:
+        - conditionId: text_contains_strings
+          params:
+            text: "${userMessageText}"
+            strings:
+              - ${outputs.get_dependabot_alerts.data?.length}
+      then:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: Thanks for the update!
+          - actionId: finish_step
+      else:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: Are you sure? I need the exact number of issues found in the report.

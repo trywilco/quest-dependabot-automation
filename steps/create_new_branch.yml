@@ -1,0 +1,24 @@
+id: create_new_branch
+learningObjectives:
+  - "How to create a new branch and commit changes to your GitHub repository"
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: "For any code change, we recommend creating a branch in your GitHub repository."
+          - text: "In Git, branches are an essential part of your everyday development process. Git branches act as pointers to a snapshot of your changes."
+          - text: "To create a new branch in your GitHub repository, click the bottom left button labeled 'Main'."
+          - text: "![](https://res.cloudinary.com/wilco/image/upload/v1728385920/clickonmain_mwlhbe.png)"
+          - text: "From the drop-down menu, select '+ Create new branch,' name it, and switch to that branch."
+          - text: "![](https://res.cloudinary.com/wilco/image/upload/v1728385920/createnewbranch_yzevbl.png)"
+          - text: "Let me know when you are ready."
+    - actionId: ready_message
+      params:
+        person: lucca
+trigger:
+  type: user_ready_response
+  flowNode:
+    do:
+      - actionId: finish_step

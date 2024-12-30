@@ -1,0 +1,41 @@
+id: create_dependabot_config
+learningObjectives:
+  - Create a basic Dependabot configuration file.
+hints:
+  - Create a new file under the .github directory in the repo.
+  - Ensure your package manager is correct in the configuration.
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: Alright, treasure hunter, now we'll set up a Dependabot configuration file
+              to automate updates.
+          - text: >
+              In the .github folder of your repository, create a new file named
+              `dependabot.yml`. Use the following configuration as a
+              start:
+
+              ```yaml
+
+              version: 2
+              
+              updates:
+                - package-ecosystem: 'npm' 
+                  directory: 'backend'
+                  schedule:
+                    interval: 'daily'
+              ```
+          - text: This file tells Dependabot when and where to look for updates, like
+              setting a weekly shopping list but for dependencies.
+
+trigger:
+  type: github_pr_lifecycle_status
+  flowNode:
+    do:
+      - actionId: github_pr_review
+        params:
+          messages:
+            person: lucca
+            approved: "You did it! Now you can merge it."

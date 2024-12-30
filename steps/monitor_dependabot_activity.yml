@@ -1,0 +1,58 @@
+id: monitor_dependabot_activity
+learningObjectives:
+  - Monitor and review Dependabot pull requests.
+hints:
+  - Check the 'Pull requests' tab in your GitHub repository for new Dependabot
+    suggestions.
+  - Review the code changes in each pull request to ensure they meet your
+    standards.
+startFlow:
+  do:
+    - actionId: bot_message
+      params:
+        person: lucca
+        messages:
+          - text: Alright, the setup is done, but the journey doesn't end here.
+          - text: Now, it's time to watch for Dependabot-generated pull requests. Keep an
+              eye on the pull requests tab.
+          - text: Choose one of the Dependabot pull requests from the list and review
+              the changes, it can take a couple of minutes. Once you're done, give me the PR **branch name** and i'll merge it.
+
+trigger:
+  type: user_message
+  flowNode:
+    do:
+      - actionId: github_repo_api
+        name: get_branch_name
+        params:
+          method: get
+          path: /branches/${userMessageText}
+    if:
+      conditions:
+        - conditionId: text_contains_strings
+          params:
+            text: "${userMessageText}"
+            strings:
+              - dependabot/
+        - conditionId: is_truthy
+          params:
+            value: ${outputs.get_branch_name.data?.name}
+      then:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: Thanks for the update! I'll now merge the PR for you. Give me a moment.
+          - actionId: github_merge_pr
+            params:
+              headBranch: ${userMessageText}
+          - actionId: finish_step
+
+      else:
+        do:
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: Are you sure? It doesn't seem like a dependabot branch. Please try again.

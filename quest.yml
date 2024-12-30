@@ -1,0 +1,25 @@
+id: dependabot_automation
+title: "Boost repo security: Automate with Dependabot"
+subtitle: "Boost repo security: Automate with Dependabot"
+description: In this quest, you'll learn to automate dependency updates using
+  Dependabot. You'll configure Dependabot to enhance your GitHub repository's
+  security and learn to monitor its activity, review alerts, and manage pull
+  requests effectively.
+skills:
+  - security
+  - git
+  - documentation
+steps:
+  - intro_dependabot
+  - review_dependabot_alerts
+  - codespace_start
+  - create_new_branch
+  - create_dependabot_config
+  - monitor_dependabot_activity
+level: intermediate
+duration: 2
+repository: https://github.com/trywilco/Anythink-Market-Public
+frameworks:
+  backend:
+    - node
+
