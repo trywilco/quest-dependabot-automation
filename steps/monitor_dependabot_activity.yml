@@ -57,4 +57,4 @@ trigger:
             params:
               person: lucca
               messages:
-                - text: Are you sure? It doesn't seem like a dependabot branch. Please try again.
+                - text: Are you sure? It doesn't seem like a Dependabot branch. Please try again.
