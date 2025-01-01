@@ -15,7 +15,7 @@ startFlow:
               vulnerabilities. It's like finding hidden treasures, only these
               treasures want to sink your project.
           - text: "Open your [Dependabot vulnerability report](${user.repository}/security/dependabot)."
-          - text: "Look at the severity drop down and let me know how many **Critical** Dependabot vulnerability alerts you see?"
+          - text: "Look at the severity drop down and let me know :instruction[how many **Critical** Dependabot vulnerability alerts you see?]"
 trigger:
   type: user_message
   flowNode:
