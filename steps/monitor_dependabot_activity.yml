@@ -49,6 +49,15 @@ trigger:
           - actionId: github_merge_pr
             params:
               headBranch: ${userMessageText}
+          - actionId: bot_message
+            params:
+              person: lucca
+              messages:
+                - text: "You've just completed the Automate with Dependabot quest—great job! You configured GitHub Dependabot to automatically scan your project's dependencies for vulnerabilities and set up a Dependabot config file to keep your dependencies updated. You also practiced monitoring Dependabot alerts and reviewing its security update pull requests to keep your project safe."
+                - text: "Next, to strengthen your skills and apply them more confidently, here's a personalized learning path:"
+                - text: "👉 GitHub Skills: [Introduction to CodeQL](https://github.com/skills/introduction-to-codeql) – practice running code scanning with CodeQL to identify and fix insecure coding patterns in your codebase."
+                - text: "👉 Microsoft Learn: [Configure Dependabot security updates on your GitHub repo](https://learn.microsoft.com/en-us/training/modules/configure-dependabot-security-updates-on-github-repo/) – deepen your understanding of dependency management by learning how to configure Dependabot alerts, analyze vulnerability details, and manage automated security updates on GitHub."
+                - text: "👉 Microsoft Applied Skills: [GitHub Advanced Security](https://learn.microsoft.com/en-us/credentials/certifications/github-advanced-security/) – earn a credential that validates your GitHub security expertise, from finding vulnerabilities to implementing secure workflows."
           - actionId: finish_step
 
       else:
